@@ -25,7 +25,9 @@ class RemoteServiceBase {
 
     // MARK: -
     func prepareCommonRequest(method: String, path: String, contentType: String = "application/json", queryItems: [URLQueryItem] = []) throws -> URLRequest {
-        let components = NSURLComponents(string: baseURL)!
+        guard let components = NSURLComponents(string: baseURL) else {
+            throw RemoteServiceError.invalidURL
+        }
         components.path = path
         components.queryItems = queryItems
         var remoteRequest = URLRequest(url: components.url!)

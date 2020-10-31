@@ -10,25 +10,30 @@ import UIKit
 
 class MovieCatalogViewController: UIViewController, MovieCatalog {
 
-    var movieService: MovieService
+    var movieService: MovieService!
 
     @IBOutlet private weak var mainTable: UITableView!
     private lazy var paginator: PageDescribe = PageDescribe<MovieDescription>()
     private var imageRequests: [AnyHashable: URLSessionDataTask] = [:]
+    private lazy var refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(refetchList), for: .valueChanged)
+        return control
+    }()
 
     /// UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetch(force: true)
+        mainTable.tableFooterView = UIView()
+        mainTable.refreshControl = refreshControl
+        fetch(reset: true)
     }
 
     init(movieService: MovieService) {
-        self.movieService = movieService
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
-        movieService = ServicesFactory.shared.movieService
         super.init(coder: aDecoder)
     }
 
@@ -40,11 +45,15 @@ class MovieCatalogViewController: UIViewController, MovieCatalog {
     }
 
     // MARK: - Private
-    private func fetch(force: Bool = false) {
-        guard force || !paginator.isLoading else {
+    private func fetch(reset: Bool = false) {
+        guard reset || !paginator.isLoading else {
             return
         }
         paginator.isLoading = true
+        if reset {
+            paginator.lastPage = 0
+            paginator.results = []
+        }
         movieService.getPopularMovies(page: paginator.lastPage + 1, success: {[weak self] (container) in
             guard let self = self else {
                 return
@@ -63,9 +72,11 @@ class MovieCatalogViewController: UIViewController, MovieCatalog {
                 self.paginator.results += container.results
                 self.mainTable.endUpdates()
             }
+            self.refreshControl.endRefreshing()
         }) { [weak self] in
             self?.showErrorBaner()
             self?.paginator.isLoading = false
+            self?.refreshControl.endRefreshing()
         }
     }
 
@@ -89,6 +100,12 @@ class MovieCatalogViewController: UIViewController, MovieCatalog {
         alertVC.addAction(okAction)
         present(alertVC, animated: true, completion: nil)
     }
+    
+    @objc
+    func refetchList() {
+        fetch(reset: true)
+    }
+
 }
 
 extension MovieCatalogViewController: UITableViewDataSource, UITableViewDelegate {

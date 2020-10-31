@@ -7,5 +7,5 @@
 //
 
 protocol Moviable: class {
-    var movieService: MovieService { get set }
+    var movieService: MovieService! { get set }
 }

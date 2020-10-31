@@ -36,9 +36,7 @@ class RemoteMovieService: RemoteServiceBase, MovieService {
             }
             result.resume()
         } catch {
-            DispatchQueue.main.async {
-                failure?()
-            }
+            failure?()
         }
     }
 
@@ -59,9 +57,7 @@ class RemoteMovieService: RemoteServiceBase, MovieService {
             result.resume()
             return result
         } catch {
-            DispatchQueue.main.async {
-                success(nil)
-            }
+            success(nil)
             return nil
         }
     }
@@ -89,9 +85,7 @@ class RemoteMovieService: RemoteServiceBase, MovieService {
             }
             result.resume()
         } catch {
-            DispatchQueue.main.async {
-                failure?()
-            }
+            failure?()
         }
     }
 
@@ -118,9 +112,7 @@ class RemoteMovieService: RemoteServiceBase, MovieService {
             }
             result.resume()
         } catch {
-            DispatchQueue.main.async {
-                failure?()
-            }
+            failure?()
         }
     }
 
@@ -148,9 +140,7 @@ class RemoteMovieService: RemoteServiceBase, MovieService {
             }
             result.resume()
         } catch {
-            DispatchQueue.main.async {
-                failure?()
-            }
+            failure?()
         }
     }
 
@@ -196,7 +186,5 @@ class RemoteMovieService: RemoteServiceBase, MovieService {
         ]
         return try prepareCommonRequest(method: "GET", path: "/3/search/movie", queryItems: queryItems)
     }
-
-
 
 }

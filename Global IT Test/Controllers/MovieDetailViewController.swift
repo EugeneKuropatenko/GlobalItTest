@@ -10,7 +10,7 @@ import UIKit
 
 class MovieDetailViewController: UIViewController, MovieDetails {
     var movie: MovieFullDescription?
-    var movieService: MovieService
+    var movieService: MovieService!
 
     @IBOutlet private weak var posterImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -34,7 +34,6 @@ class MovieDetailViewController: UIViewController, MovieDetails {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        movieService = ServicesFactory.shared.movieService
         super.init(coder: aDecoder)
     }
 

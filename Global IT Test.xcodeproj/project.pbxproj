@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		577AB3E6254D9505007B442C /* RemoteServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577AB3E5254D9505007B442C /* RemoteServiceError.swift */; };
 		C650F4A8225A1A560065D66F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650F4A7225A1A560065D66F /* AppDelegate.swift */; };
 		C650F4AA225A1A560065D66F /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C650F4A9225A1A560065D66F /* MovieDetailViewController.swift */; };
 		C650F4AD225A1A560065D66F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C650F4AB225A1A560065D66F /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		577AB3E5254D9505007B442C /* RemoteServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteServiceError.swift; sourceTree = "<group>"; };
 		C650F4A4225A1A560065D66F /* Global IT Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Global IT Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C650F4A7225A1A560065D66F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C650F4A9225A1A560065D66F /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				C650F4D1225A4A6D0065D66F /* ServicesFactory.swift */,
 				C650F4DC225A4FFF0065D66F /* RemoteServiceBase.swift */,
+				577AB3E5254D9505007B442C /* RemoteServiceError.swift */,
 				C650F4D7225A4C070065D66F /* Models */,
 				C650F4D5225A4B120065D66F /* MovieService.swift */,
 				C650F4D3225A4AF10065D66F /* RemoteMovieService.swift */,
@@ -348,6 +351,7 @@
 				C650F4E9225A56770065D66F /* Moviable.swift in Sources */,
 				C650F4DD225A4FFF0065D66F /* RemoteServiceBase.swift in Sources */,
 				C650F4E5225A54F50065D66F /* MainRouter.swift in Sources */,
+				577AB3E6254D9505007B442C /* RemoteServiceError.swift in Sources */,
 				C650F4EB225A62790065D66F /* PageDescribe.swift in Sources */,
 				C650F4F5225B17590065D66F /* GenreDescription.swift in Sources */,
 				C650F4CC225A3E210065D66F /* MovieCatalogViewController.swift in Sources */,
